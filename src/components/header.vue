@@ -17,20 +17,37 @@
             <div class="header__right-menu row" :class="{'display-none': showModal}">
                 <div class="right-menu__item">+971 58 590 7875</div>
                 <label for="cities" class="right-menu__item">
-                    <select name="cities">
-                        <option value="dubai">Dubai</option>
-                        <option value="dubai">Kyiv</option>
-                        <option value="dubai">Budapest</option>
-                        <option value="dubai">Wiesbaden</option>
-                    </select>
+                    <div class="select select--city" :class="{'selectOpened': isActive}"
+                    @click="isActiveCity=!isActiveCity" @keypress="isActive=!isActive">
+                        <select v-model="selectedCity" >
+                            <option v-for="city in cities" v-bind:value="city.value"
+                            v-bind:key="city">
+                                {{city.text}}</option>
+                        </select>
+                    </div>
                 </label>
                 <label for="lang" class="right-menu__item">
-                    <select name="lang">
-                        <option value="ENG">ENG</option>
-                        <option value="UA">UA</option>
-                    </select>
+                    <div class="select select--lang" :class="{'selectOpened': isActive}"
+                    @click="isActiveLang=!isActiveLang" @keypress="isActive=!isActive">
+                        <select v-model="selectedLang">
+                            <option v-for="lang in languages" v-bind:value="lang.value"
+                            v-bind:key="lang">
+                            {{ lang.text }}</option>
+                        </select>
+                    </div>
                 </label>
             </div>
+        </div>
+        <div class="main-text">
+            <div class="main-text__title">
+                Dubai
+            </div>
+            <div class="main-text__description">
+                LUXURY CAR RENTAL
+            </div>
+        </div>
+        <div class="socials">
+            <img src="../assets/social.svg" alt="">
         </div>
     </div>
     <AppBurger
@@ -48,16 +65,48 @@ export default {
   data() {
     return {
       showModal: false,
+      selectedCity: 'Kyiv',
+      selectedLang: 'UA',
+      cities: [
+        { text: 'Dubai', value: 'Dubai' },
+        { text: 'Kyiv', value: 'Kyiv' },
+        { text: 'Budapest', value: 'Budapest' },
+        { text: 'Wiesbaden', value: 'Wiesbaden' },
+      ],
+      languages: [
+        { text: 'UA', value: 'UA' },
+        { text: 'ENG', value: 'ENG' },
+      ],
+      isActiveCity: false,
+      isActiveLang: false,
     };
   },
 };
 </script>
 <style src="../css/common.css"></style>
 <style lang="scss" scoped>
+    @mixin select($w) {
+        cursor: pointer;
+        position: relative;
+        width: $w;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        &::after {
+            content: url('../assets/arrow-point-to-right\ 1.svg');
+            position: absolute;
+            pointer-events:none;
+            cursor:pointer;
+            top: 2px;
+            right: 0;
+            padding: 0 1em;
+        }
+    }
     .header-wrapper {
         position: relative;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         min-height: 100vh;
         background-image: url('../assets/header-bg.jpg');
         background-position: top;
@@ -133,4 +182,53 @@ export default {
     .display-none {
         display: none;
     }
+    .main-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__title {
+            color:white;
+            font-size: 120px;
+        }
+        &__description {
+            color:white;
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+}
+.socials {
+    display: flex;
+    justify-content: flex-end;
+}
+select {
+    appearance: none;
+    flex: 1;
+    background: #3a4f60;
+    margin-right: 10px;
+    outline: 0;
+    box-shadow:none;
+    padding: 0 .5em;
+    border: 0 !important;
+    background-image: none;
+    cursor: pointer;
+    color: white;
+        &::-ms-expand {
+            display: none;
+        }
+}
+.select--city {
+    @include select(120px)
+}
+.select--lang {
+    @include select(70px)
+}
+    .select.selectOpened::after {
+        content: url('../assets/dropdown.svg');
+        position: absolute;
+        pointer-events:none;
+        cursor:pointer;
+        top: 2px;
+        right: 0;
+        padding: 0 1em;
+}
 </style>
