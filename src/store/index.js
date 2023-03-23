@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
 
+import header from './header';
+
 export default createStore({
   state: {
   },
@@ -9,7 +11,6 @@ export default createStore({
   },
   actions: {
   },
-  modules: {
-  },
+  modules: { header },
   strict: process.env.NODE_ENV !== 'production',
 });

@@ -16,8 +16,8 @@
             </div>
             <div class="header__right-menu row" :class="{'display-none': showModal}">
                 <div class="right-menu__item">+971 58 590 7875</div>
-                <label for="cities" class="right-menu__item">
-                    <div class="select select--city" :class="{'selectOpened': isActive}"
+                <!-- <label for="cities" class="right-menu__item">
+                    <div class="select select--city" :class="{'selectOpened': isActiveCity}"
                     @click="isActiveCity=!isActiveCity" @keypress="isActive=!isActive">
                         <select v-model="selectedCity" >
                             <option v-for="city in cities" v-bind:value="city.value"
@@ -25,9 +25,20 @@
                                 {{city.text}}</option>
                         </select>
                     </div>
-                </label>
+                </label> -->
+                <div class="header__right-menu row city-select right-menu__item"
+                @click="showCityList =!showCityList" @keypress="showCityList =!showCityList">
+                    <div class="city-select__lable">{{selectedCity}}</div>
+                    <img v-if="showCityList" src="../assets/dropdown.svg" alt="" >
+                    <img v-else src="../assets/arrow-white.svg" alt="">
+                </div>
+                <div class="city-select__list" v-if="showCityList">
+                    <div v-for="city in cities" v-bind:key="city" class="city"
+                    @click="selectedCity = city.value" @keypress="selectedCity = city.value">
+                        {{ city.value }}</div>
+                </div>
                 <label for="lang" class="right-menu__item">
-                    <div class="select select--lang" :class="{'selectOpened': isActive}"
+                    <div class="select select--lang" :class="{'selectOpened': isActiveLang}"
                     @click="isActiveLang=!isActiveLang" @keypress="isActive=!isActive">
                         <select v-model="selectedLang">
                             <option v-for="lang in languages" v-bind:value="lang.value"
@@ -55,6 +66,7 @@
     />
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import AppBurger from './burger.vue';
 
 export default {
@@ -67,20 +79,15 @@ export default {
       showModal: false,
       selectedCity: 'Kyiv',
       selectedLang: 'UA',
-      cities: [
-        { text: 'Dubai', value: 'Dubai' },
-        { text: 'Kyiv', value: 'Kyiv' },
-        { text: 'Budapest', value: 'Budapest' },
-        { text: 'Wiesbaden', value: 'Wiesbaden' },
-      ],
-      languages: [
-        { text: 'UA', value: 'UA' },
-        { text: 'ENG', value: 'ENG' },
-      ],
       isActiveCity: false,
       isActiveLang: false,
+      showCityList: false,
     };
   },
+  computed: {
+    ...mapGetters('header', { cities: 'allCities', languages: 'allLangs' }),
+  },
+
 };
 </script>
 <style src="../css/common.css"></style>
@@ -93,7 +100,7 @@ export default {
         display: flex;
         align-items: center;
         &::after {
-            content: url('../assets/arrow-point-to-right\ 1.svg');
+            content: url('../assets/arrow-white.svg');
             position: absolute;
             pointer-events:none;
             cursor:pointer;
@@ -231,4 +238,38 @@ select {
         right: 0;
         padding: 0 1em;
 }
+
+.city-select {
+    position: relative;
+    width: 120px;
+    cursor: pointer;
+&__lable {
+    margin-right: 10px;
+}
+
+&__list {
+    position: absolute;
+    top: 140px;
+    right: 180px;
+    padding: 10px 25px;
+    border-radius: 10%;
+    border: solid 1px #3a4f60;
+    width: 188px;
+    height: 203px;
+}
+}
+.city {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 15px 0;
+    border-bottom: solid 1px #3a4f60;
+    cursor: pointer;
+    &:last-child {
+        border-bottom: none;
+    }
+    &:hover {
+        color: #33B7BC;
+    }
+}
+
 </style>
