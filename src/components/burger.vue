@@ -13,16 +13,32 @@
         </div>
         <div class="menu__block">
             <ul class="menu__list">
-                <li class="menu__item">Car List</li>
-                <li class="menu__item">Yacht list</li>
-                <li class="menu__item">Chauffeur</li>
-                <li class="menu__item">Conditions</li>
-                <li class="menu__item">Testimonials</li>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Car list</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Yacht list</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Chauffeur</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Conditions</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Testimonials</router-link>
             </ul>
             <ul class="menu__list">
-                <li class="menu__item">Articles</li>
-                <li class="menu__item">About US</li>
-                <li class="menu__item">Contacts</li>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Articles</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >About US</router-link>
+                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                @click="$emit('close')" @keypress="$emit('close')"
+                >Contacts</router-link>
             </ul>
         </div>
         <div class="menu__footer">
@@ -76,6 +92,7 @@ export default {
             color: #76828C;
             font-size: 40px;
             margin-bottom: 50px;
+            display: block;
             position: relative;
             z-index: 1;
             width: fit-content;

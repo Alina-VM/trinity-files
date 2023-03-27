@@ -5,7 +5,7 @@
                 <img src="../assets/menu.svg" alt="menu" class="menu-burger left-menu__item"
                 @click="showModal = true" @keypress="showModal = true"
                 >
-                <div class="left-menu__item">Car List</div>
+                <router-link to="/carlist" class="left-menu__item">Car List</router-link>
                 <div class="left-menu__item">Yach List</div>
                 <div class="left-menu__item">Chauffeur</div>
             </div>
@@ -32,9 +32,10 @@
                     <img v-if="showCityList" src="../assets/dropdown.svg" alt="" >
                     <img v-else src="../assets/arrow-white.svg" alt="">
                 </div>
-                <div class="city-select__list" v-if="showCityList">
+                <div class="city-select__list" v-if="showCityList"
+                @click.stop="showCityList = false" @keypress.stop="showCityList = false">
                     <div v-for="city in cities" v-bind:key="city" class="city"
-                    @click="selectedCity = city.value" @keypress="selectedCity = city.value">
+                    @click="cityBlock" @keypress="cityBlock">
                         {{ city.value }}</div>
                 </div>
                 <label for="lang" class="right-menu__item">
@@ -49,17 +50,7 @@
                 </label>
             </div>
         </div>
-        <div class="main-text">
-            <div class="main-text__title">
-                Dubai
-            </div>
-            <div class="main-text__description">
-                LUXURY CAR RENTAL
-            </div>
-        </div>
-        <div class="socials">
-            <img src="../assets/social.svg" alt="">
-        </div>
+
     </div>
     <AppBurger
     :show="showModal" @close="showModal = false"
@@ -87,6 +78,11 @@ export default {
   computed: {
     ...mapGetters('header', { cities: 'allCities', languages: 'allLangs' }),
   },
+  methods: {
+    cityBlock(e) {
+      this.selectedCity = e.target.textContent;
+    },
+  },
 
 };
 </script>
@@ -109,15 +105,15 @@ export default {
             padding: 0 1em;
         }
     }
-    .header-wrapper {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100vh;
-        background-image: url('../assets/header-bg.jpg');
-        background-position: top;
-    }
+    // .header-wrapper {
+    //     position: relative;
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: space-between;
+    //     //min-height: 100vh;
+    //     // background-image: url('../assets/header-bg.jpg');
+    //     // background-position: top;
+    // }
     .header {
         padding: 40px 60px 60px;
         color: white;
@@ -189,24 +185,6 @@ export default {
     .display-none {
         display: none;
     }
-    .main-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        &__title {
-            color:white;
-            font-size: 120px;
-        }
-        &__description {
-            color:white;
-            font-size: 32px;
-            text-transform: uppercase;
-        }
-}
-.socials {
-    display: flex;
-    justify-content: flex-end;
-}
 select {
     appearance: none;
     flex: 1;
