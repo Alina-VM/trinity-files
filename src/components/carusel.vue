@@ -11,7 +11,7 @@
             <li class="carusel__item">Bentley</li>
             <li class="carusel__item">Porsche</li>
             <li class="carusel__item">Lexus</li>
-            <li class="carusel__item">Mercedes</li>
+            <li class="carusel__item" ref="targetForStop">Mercedes</li>
         </ul>
     </div>
 
@@ -27,6 +27,10 @@ export default {
         { label: 'Maserati' }, { label: 'Lamborgini' }, { label: 'Bentley' }, { label: 'Porsche' },
         { label: 'Lexus' }, { label: 'Mercedes' }],
       counter: 0,
+      options: {
+        threshold: 1.0,
+      },
+      isSliderStop: false,
     };
   },
   methods: {
@@ -37,7 +41,7 @@ export default {
         this.counter += 50;
         console.log(this.counter);
         list.style.transform = `translateX(${this.counter}px)`;
-      } else {
+      } else if (!this.isSliderStop) {
         this.counter -= 50;
         console.log(this.counter);
         console.log(`translateX(${this.counter}px)`);
@@ -45,6 +49,20 @@ export default {
       }
       // this.currentClass = e.x < document.documentElement.clientWidth / 2;
     },
+    callback(entries, observer) {
+      // this.$refs.targetForStop.removeClass()
+      console.log(entries);
+      console.log(observer);
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.isSliderStop = true;
+        }
+      });
+    },
+  },
+  mounted() {
+    const observer = new IntersectionObserver(this.callback, this.options);
+    observer.observe(this.$refs.targetForStop);
   },
 };
 </script>
