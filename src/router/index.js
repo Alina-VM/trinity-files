@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 // import App from '../App.vue';
 import HomeApp from '../pages/HomeApp.vue';
 import CarList from '../pages/CarList.vue';
+import Lamborgini from '../pages/Lamborgini.vue';
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/contacts',
     name: 'contacts',
     component: CarList,
+  },
+  {
+    path: '/lamborgini',
+    name: 'lamborgini',
+    component: Lamborgini,
   },
 
 ];

@@ -1,24 +1,25 @@
 <template>
     <div class="container carusel" @click="getCoordinates" @keypress="getCoordinates"
-    >
-        <ul class="carusel__list">
-            <li class="carusel__item">Audi</li>
+    @mousedown="moveSliderLine" @mousemove="move" @mouseup="mouseUp" ref="caruselBlock">
+        <ul class="carusel__list" ref="listCarusel">
+            <li class="carusel__item" ref="firstSliderItem" id="first">Audi</li>
             <li class="carusel__item">BMW</li>
             <li class="carusel__item">Rolls-Royce</li>
             <li class="carusel__item">Cadillac</li>
+            <router-link :to="{name: 'lamborgini'}" class="carusel__item" @click.stop>
+              Lamborgini
+            </router-link>
             <li class="carusel__item">Maserati</li>
-            <li class="carusel__item">Lamborgini</li>
             <li class="carusel__item">Bentley</li>
             <li class="carusel__item">Porsche</li>
             <li class="carusel__item">Lexus</li>
-            <li class="carusel__item" ref="targetForStop">Mercedes</li>
+            <li class="carusel__item" ref="lastSliderItem" id="last">Mercedes</li>
         </ul>
     </div>
 
 </template>
 
 <script>
-
 export default {
   name: 'AppCarusel',
   data() {
@@ -30,39 +31,57 @@ export default {
       options: {
         threshold: 1.0,
       },
-      isSliderStop: false,
+      isSliderStopFirst: false,
+      isSliderStopLast: false,
+      isMouseDown: false,
+      clientX: 0,
     };
   },
   methods: {
     getCoordinates(e) {
-      const list = document.querySelector('.carusel__list');
-      console.log(e.x < document.documentElement.clientWidth / 2);
-      if (e.x < document.documentElement.clientWidth / 2) {
+      if (e.x < document.documentElement.clientWidth / 2 && !this.isSliderStopFirst) {
         this.counter += 50;
-        console.log(this.counter);
-        list.style.transform = `translateX(${this.counter}px)`;
-      } else if (!this.isSliderStop) {
+        this.$refs.listCarusel.style.transform = `translateX(${this.counter}px)`;
+      } else if (!this.isSliderStopLast) {
         this.counter -= 50;
-        console.log(this.counter);
-        console.log(`translateX(${this.counter}px)`);
-        list.style.transform = `translateX(${this.counter}px)`;
+        this.$refs.listCarusel.style.transform = `translateX(${this.counter}px)`;
       }
-      // this.currentClass = e.x < document.documentElement.clientWidth / 2;
     },
     callback(entries, observer) {
-      // this.$refs.targetForStop.removeClass()
-      console.log(entries);
       console.log(observer);
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.isSliderStop = true;
+        if (entry.isIntersecting && entry.target.id === 'first') {
+          this.isSliderStopFirst = true;
+        }
+        if (entry.isIntersecting && entry.target.id === 'last') {
+          this.isSliderStopLast = true;
         }
       });
+    },
+    moveSliderLine(e) {
+      this.isMouseDown = true;
+      this.clientX = e.clientX;
+      console.log(e.clientX);
+    },
+    move(e) {
+      if (this.isMouseDown) {
+        console.log(e.clientX - this.clientX);
+        this.$refs.listCarusel.style.transform = `translateX(${e.clientX - this.clientX}px)`;
+      }
+    },
+    mouseUp(e) {
+      console.log(this.clientX);
+      this.clientX = e.clientX;
+      this.isMouseDown = false;
+      // this.$refs.listCarusel.style.transform = `translateX(${e.clientX - this.clientX}px)`;
+      console.log(this.clientX);
+      console.log(e.clientX);
     },
   },
   mounted() {
     const observer = new IntersectionObserver(this.callback, this.options);
-    observer.observe(this.$refs.targetForStop);
+    observer.observe(this.$refs.lastSliderItem);
+    observer.observe(this.$refs.firstSliderItem);
   },
 };
 </script>
@@ -70,11 +89,11 @@ export default {
 <style lang="scss" scoped>
     .carusel {
         background-color: #161516;
-        padding: 20px 0;
+        padding: 40px 0;
         &__list {
             display: flex;
             justify-content: space-around;
-            transition: all .2s ease-in-out;
+            // transition: all .2s ease-in-out;
             //overflow: hidden;
 
         }
@@ -87,6 +106,23 @@ export default {
             margin-left: 20px;
             margin-right: 20px;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
+            &:hover {
+                color: white;
+                &::before {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                //left: 29%;
+                bottom: 0px;
+                width: 100%;
+                height: 14px;
+                transform: skew(-12deg) ;
+                background-color: rgb(144, 196, 179);
+                z-index: -1;
+            }
+          }
         }
     .transition-right {
         transform: translateX(5%);
