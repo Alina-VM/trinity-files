@@ -105,6 +105,11 @@ export default {
             padding: 0 1em;
         }
     }
+    @mixin to-960 {
+        @media  screen and (max-width: 960px) {
+            @content
+        }
+}
     // .header-wrapper {
     //     position: relative;
     //     display: flex;
@@ -125,6 +130,9 @@ export default {
         &__right-menu {
             justify-content: space-between;
             align-items: center;
+        }
+        @include to-960() {
+            padding: 30px 25px;
         }
     }
     .header-logo {
@@ -152,6 +160,9 @@ export default {
             z-index: 1;
             width: fit-content;
             position: relative;
+            @media screen and (max-width: 1250px) {
+                margin-right: 30px;
+            }
             &:hover {
                 color: white;
                 &::before {
@@ -171,6 +182,9 @@ export default {
     .right-menu{
         &__item {
             margin-left: 58px;
+            @media screen and (max-width: 1250px) {
+                margin-left: 30px;
+            }
         }
     }
     .menu-burger {
@@ -221,6 +235,9 @@ select {
     position: relative;
     width: 120px;
     cursor: pointer;
+    @include to-960() {
+            width: 60px;
+        }
 &__lable {
     margin-right: 10px;
 }

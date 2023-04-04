@@ -91,22 +91,38 @@ export default {
   border-top: solid 1px #414039;
   padding: 36px 60px;
   filter: grayscale(100%);
+  & img {
+    width: 100%;
+  }
 }
 
 &__copyright {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 25px 60px;
+  border-top: solid 1px #414039;
 }
 
-&__privacy {}
+&__privacy {
+  color: #33B7BC;
+}
 
-&__year {}
+&__year {
+  color: #414039;
+}
 
 &__smm-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  & img {
+    margin-right: 30px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
 }
 }
 .footer-categories {
@@ -117,6 +133,7 @@ export default {
 
 &__block {
   min-width: 30%;
+  margin-right: 63px;
 }
 
 &__title {
@@ -199,16 +216,20 @@ export default {
   background-color: #414039;
   border: solid 1px;
   border-radius: 5px;
-  width: 568px;
+  max-width: 568px;
+  margin-right: 10px;
   height: 90px;
   display: flex;
   padding: 5px;
+  & label {
+    width: 100%;
+  }
 
 }
 }
 #email {
   background-color: transparent;
-  padding: 31px 157px 31px 33px;
+  padding: 31px 0 31px 33px;
   font-weight: 400;
   font-size: 20px;
 }
