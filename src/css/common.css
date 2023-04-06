@@ -120,6 +120,7 @@ h1, h2, h3, h4, h5, h6 {
 
 html, body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 .container {
@@ -131,9 +132,9 @@ html, body {
     max-width: 960px;
   }
 }
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 375px) {
   .container {
-    max-width: 360px;
+    max-width: 375px;
   }
 }
 

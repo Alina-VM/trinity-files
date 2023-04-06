@@ -79,6 +79,11 @@ export default {
 </script>
 <style src="../css/common.css"></style>
 <style lang="scss" scoped>
+@mixin to-960 {
+    @media  screen and (max-width: 960px) {
+        @content
+    }
+}
   .footer {
     background-color: #161516;
 &__main {
@@ -130,6 +135,9 @@ export default {
   flex: 1 1 auto;
   border-right: solid 1px #414039;
   padding: 60px;
+  @include to-960() {
+    padding: 30px;
+  }
 
 &__block {
   min-width: 30%;
@@ -141,6 +149,10 @@ export default {
   font-size: 20px;
   line-height: 90px;
   color: #FFFF;
+  @include to-960() {
+    font-size: 18px;
+    line-height: 45px;
+  }
 }
 
 &__list {}
@@ -176,6 +188,9 @@ export default {
   display: flex;
   flex-direction: column;
   width: 798px;
+  @include to-960() {
+    padding: 30px 5px 30px 30px;
+  }
 
 &__phone {
   display: flex;
@@ -183,8 +198,15 @@ export default {
   font-weight: 700;
   font-size: 34px;
   line-height: 90px;
+  @include to-960() {
+    font-size: 23px;
+    line-height: 72px;
+  }
   & div {
     margin-right: 30px;
+    @include to-960() {
+      margin-right: 25px;
+  }
   }
   & img {
     width: 100px;
@@ -210,6 +232,10 @@ export default {
   line-height: 34px;
   max-width: 416px;
   margin-bottom: 70px;
+  @include to-960() {
+    font-size: 18px;
+    line-height: 30px;
+  }
 }
 
 &__subscribe {
@@ -221,6 +247,11 @@ export default {
   height: 90px;
   display: flex;
   padding: 5px;
+  @include to-960() {
+    height: 76px;
+    width: 100%;
+    justify-content: space-between;
+  }
   & label {
     width: 100%;
   }
@@ -232,6 +263,10 @@ export default {
   padding: 31px 0 31px 33px;
   font-weight: 400;
   font-size: 20px;
+  @include to-960() {
+    font-size: 16px;
+    padding: 22px 0 31px 9px;
+  }
 }
 .submit {
   background-color: #33B7BC;
@@ -241,6 +276,10 @@ export default {
   font-size: 15px;
   width: 131px;
   height: 80px;
+  @include to-960() {
+    width: 42%;
+    height: 100%;
+  }
 
 }
 </style>

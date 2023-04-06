@@ -64,7 +64,11 @@ export default {
 </script>
 <style src="../css/common.css"></style>
 <style lang="scss" scoped>
-
+@mixin to-375 {
+    @media  screen and (max-width: 375px) {
+        @content
+    }
+}
     .menu {
         position: absolute;
         top: 0;
@@ -73,20 +77,47 @@ export default {
         background-color: black;
         background-image: url('../assets/burger-bg.jpg');
         background-position: bottom;
+        @include to-375() {
+            padding: 30px 20px;
+        }
         &__logo {
             color: white;
             flex-direction: column;
             align-items: center;
+            & img {
+                @include to-375() {
+                width: 50px;
+                height: 47px;
+                }
+            }
+
         }
         &__name {
             font-size: 26px;
             margin-bottom: 10px;
+            @include to-375() {
+                display: none;
+            }
+        }
+        &__description {
+            @include to-375() {
+                display: none;
+            }
         }
         &__cross {
             width: 47px;
             height: 47px;
             margin-right: 37%;
             cursor: pointer;
+            @include to-375() {
+                width: 34px;
+                height: 34px;
+                margin-right: 100px;
+            }
+            & img {
+                width: 100%;
+                height: 100%;
+            }
         }
         &__item {
             color: #76828C;
@@ -97,6 +128,9 @@ export default {
             z-index: 1;
             width: fit-content;
             cursor: pointer;
+            @include to-375() {
+                font-size: 20px;
+            }
             &:hover {
                 color: white;
                 &::before {

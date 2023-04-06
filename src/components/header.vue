@@ -105,22 +105,19 @@ export default {
             padding: 0 1em;
         }
     }
-    @mixin to-960 {
-        @media  screen and (max-width: 960px) {
-            @content
-        }
+@mixin to-960 {
+    @media  screen and (max-width: 960px) {
+        @content
+    }
 }
-    // .header-wrapper {
-    //     position: relative;
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: space-between;
-    //     //min-height: 100vh;
-    //     // background-image: url('../assets/header-bg.jpg');
-    //     // background-position: top;
-    // }
+@mixin to-375 {
+    @media  screen and (max-width: 375px) {
+        @content
+    }
+}
     .header {
         padding: 40px 60px 60px;
+        align-items: center;
         color: white;
         justify-content: space-between;
         &__left-menu {
@@ -140,16 +137,26 @@ export default {
         align-items: center;
         &__img {
             margin-bottom: 22px;
+            @include to-375() {
+                width: 50px;
+                height: 47px;
+            }
         }
 
         &__name {
             font-size: 28px;
             text-transform: uppercase;
             margin-bottom: 15px;
+            @include to-375() {
+                display: none;
+            }
         }
 
         &__description {
             font-size: 11px;
+            @include to-375() {
+                display: none;
+            }
         }
     }
     .left-menu{
@@ -162,6 +169,11 @@ export default {
             position: relative;
             @media screen and (max-width: 1250px) {
                 margin-right: 30px;
+            }
+            &:not(:first-child) {
+                @include to-375() {
+                    display: none;
+                }
             }
             &:hover {
                 color: white;
@@ -185,10 +197,19 @@ export default {
             @media screen and (max-width: 1250px) {
                 margin-left: 30px;
             }
+        &:not(:last-child) {
+            @include to-375() {
+                display: none;
+            }
+        }
         }
     }
     .menu-burger {
         cursor: pointer;
+        @include to-375() {
+            width: 55px;
+            height: 11px;
+        }
     }
     .header.blur {
         background: rgba(255, 255, 255, 0.2);

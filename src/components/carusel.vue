@@ -87,51 +87,62 @@ export default {
 </script>
 <style src="../css/common.css"></style>
 <style lang="scss" scoped>
-    .carusel {
-        background-color: #161516;
-        padding: 40px 0;
-        &__list {
-            display: flex;
-            justify-content: space-around;
-            // transition: all .2s ease-in-out;
-            //overflow: hidden;
-
+@mixin to-960 {
+    @media  screen and (max-width: 960px) {
+        @content
+    }
+}
+  .carusel {
+      background-color: #161516;
+      padding: 40px 0;
+      @include to-960() {
+        padding: 30px 0;
         }
-        &__item {
-            color: #414141;
-            font-weight: 500;
-            font-size: 40px;
-            display: inline-block;
-            min-width: fit-content;
-            margin-left: 20px;
-            margin-right: 20px;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            &:hover {
-                color: white;
-                &::before {
-                content: "";
-                position: absolute;
-                display: inline-block;
-                //left: 29%;
-                bottom: 0px;
-                width: 100%;
-                height: 14px;
-                transform: skew(-12deg) ;
-                background-color: rgb(144, 196, 179);
-                z-index: -1;
-            }
+      &__list {
+          display: flex;
+          justify-content: space-around;
+          // transition: all .2s ease-in-out;
+          //overflow: hidden;
+
+      }
+      &__item {
+          color: #414141;
+          font-weight: 500;
+          font-size: 40px;
+          display: inline-block;
+          min-width: fit-content;
+          margin-left: 20px;
+          margin-right: 20px;
+          cursor: pointer;
+          position: relative;
+          z-index: 1;
+          &:hover {
+              color: white;
+              &::before {
+              content: "";
+              position: absolute;
+              display: inline-block;
+              //left: 29%;
+              bottom: 0px;
+              width: 100%;
+              height: 14px;
+              transform: skew(-12deg) ;
+              background-color: rgb(144, 196, 179);
+              z-index: -1;
           }
         }
-    .transition-right {
-        transform: translateX(5%);
-        transition: 1s;
-    }
-    .transition-left {
-        transform: translateX(-5%);
-        transition: 1s;
-    }
+        @include to-960() {
+          font-size: 35px;
+        }
+      }
+  .transition-right {
+      transform: translateX(5%);
+      transition: 1s;
+  }
+  .transition-left {
+      transform: translateX(-5%);
+      transition: 1s;
+  }
 }
 
 </style>

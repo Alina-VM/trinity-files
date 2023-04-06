@@ -19,6 +19,11 @@
 </template>
 
 <style lang="scss" scoped>
+@mixin to-375 {
+    @media  screen and (max-width: 375px) {
+        @content
+    }
+}
 .all {
     display: flex;
     flex-direction: column;
@@ -37,27 +42,42 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-
   }
   .main-text {
         display: flex;
         flex: 1 1 auto;
         flex-direction: column;
         align-items: center;
-        margin-top: 120px;
+        margin-top: 110px;
         &__title {
             color:white;
             font-size: 120px;
+            @include to-375() {
+                font-size: 60px;
+            }
         }
         &__description {
             color:white;
             font-size: 32px;
             text-transform: uppercase;
+            @include to-375() {
+                font-size: 17px;
+            }
         }
 }
 .socials {
     display: flex;
     justify-content: flex-end;
     padding-right: 60px;
+    @include to-375() {
+        padding-right: 25px;
+        }
+    & img {
+        @include to-375() {
+        width: 97px;
+        height: 40px;
+        }
+    }
+
 }
 </style>

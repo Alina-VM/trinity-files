@@ -1,6 +1,6 @@
 <template>
   <div class="container main" >
-    <AppHeader class=""/>
+    <AppHeader/>
     <router-view></router-view>
   </div>
   <AppFooter/>
@@ -24,5 +24,6 @@ export default {
     flex-direction: column;
     display: flex;
     align-items: stretch;
+    position: relative;
   }
 </style>
