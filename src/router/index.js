@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeApp from '../pages/HomeApp.vue';
 import CarList from '../pages/CarList.vue';
 import Lamborgini from '../pages/Lamborgini.vue';
+import Conditions from '../pages/Conditions.vue';
 
 const routes = [
   {
@@ -27,8 +28,8 @@ const routes = [
   },
   {
     path: '/conditions',
-    name: 'Conditions',
-    component: CarList,
+    name: 'conditions',
+    component: Conditions,
   },
   {
     path: '/testimonials',

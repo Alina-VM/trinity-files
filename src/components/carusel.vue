@@ -92,6 +92,11 @@ export default {
         @content
     }
 }
+@mixin to-375 {
+    @media  screen and (max-width: 375px) {
+        @content
+    }
+}
   .carusel {
       background-color: #161516;
       padding: 40px 0;
@@ -116,6 +121,12 @@ export default {
           cursor: pointer;
           position: relative;
           z-index: 1;
+          @include to-960() {
+          font-size: 35px;
+          }
+          @include to-375() {
+            font-size: 24px;
+          }
           &:hover {
               color: white;
               &::before {
@@ -131,9 +142,7 @@ export default {
               z-index: -1;
           }
         }
-        @include to-960() {
-          font-size: 35px;
-        }
+
       }
   .transition-right {
       transform: translateX(5%);

@@ -27,7 +27,7 @@
 .all {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100vh - 245px);
     flex: 1 1 auto;
 }
 .homebg {

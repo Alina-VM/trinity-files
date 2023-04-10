@@ -22,7 +22,7 @@
                 <router-link :to= "{name: 'carlist'}" class="menu__item"
                 @click="$emit('close')" @keypress="$emit('close')"
                 >Chauffeur</router-link>
-                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                <router-link :to= "{name: 'conditions'}" class="menu__item"
                 @click="$emit('close')" @keypress="$emit('close')"
                 >Conditions</router-link>
                 <router-link :to= "{name: 'carlist'}" class="menu__item"
@@ -150,7 +150,7 @@ export default {
         &__block {
             height: 400px;
             display: flex;
-            margin-bottom: 90px;
+            margin-bottom: 35px;
         }
         &__footer {
             display: flex;
@@ -160,20 +160,32 @@ export default {
     }
     .menu-header {
         align-items: center;
-        margin-bottom: 78px;
+        margin-bottom: 45px;
     }
     .footer-adress {
         color: #76828C;
         //font-size: 24px;
         font-weight: 300;
+        @include to-375() {
+                display: none;
+        }
     }
     .footer-contact {
         font-weight: 700;
         display: flex;
         align-items: center;
         color: white;
+        & img {
+            @include to-375() {
+            width: 97px;
+            height: 40px;
+            }
+        }
     }
     .footer-phone {
         margin-right: 20px;
+        @include to-375() {
+            margin-right: 100px;
+        }
     }
 </style>

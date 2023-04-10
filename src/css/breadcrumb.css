@@ -1,0 +1,24 @@
+.breadcrumb {
+  font-weight: 400;
+}
+.breadcrumb ul {
+  display: flex;
+  align-items: center;
+  color: #717171;
+}
+.breadcrumb img {
+  display: block;
+}
+.breadcrumb__link {
+  font-size: 16px;
+  line-height: 90px;
+  color: #22ECF3 !important;
+  text-decoration: underline;
+}
+.breadcrumb__arrow {
+  margin-left: 19px;
+  margin-right: 13px;
+  align-self: center;
+}
+
+/*# sourceMappingURL=breadcrumb.css.map */

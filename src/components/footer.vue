@@ -7,7 +7,9 @@
               <div class="footer-categories__title">For Customers</div>
               <ul class="footer-categories__list">
                 <li class="footer-categories__item">About Us</li>
-                <li class="footer-categories__item">Conditions</li>
+                <router-link :to="{name: 'conditions'}">
+                  <li class="footer-categories__item">Conditions</li>
+                </router-link>
                 <li class="footer-categories__item">Testimonials</li>
                 <li class="footer-categories__item">Articles</li>
                 <li class="footer-categories__item">Contacts</li>
@@ -84,11 +86,18 @@ export default {
         @content
     }
 }
+@mixin to-375 {
+    @media  screen and (max-width: 375px) {
+        @content
+    }
+}
+
   .footer {
     background-color: #161516;
 &__main {
   border-top: solid 1px #414039;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -99,22 +108,37 @@ export default {
   & img {
     width: 100%;
   }
+  @include to-375() {
+    display: none;
+  }
 }
 
 &__copyright {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 25px 60px;
   border-top: solid 1px #414039;
+  @include to-375() {
+    flex-direction: column;
+    padding: 25px 45px;
+  }
 }
 
 &__privacy {
   color: #33B7BC;
+  @include to-375() {
+    order: 6;
+  }
 }
 
 &__year {
   color: #414039;
+  text-align: center;
+  @include to-375() {
+    margin-bottom: 25px;
+  }
 }
 
 &__smm-links {
@@ -127,7 +151,10 @@ export default {
       margin-right: 0;
     }
   }
-
+  @include to-375() {
+    order: -1;
+    margin-bottom: 30px;
+  }
 }
 }
 .footer-categories {
@@ -138,10 +165,19 @@ export default {
   @include to-960() {
     padding: 30px;
   }
+  @include to-375() {
+    flex-wrap: wrap;
+  }
 
 &__block {
   min-width: 30%;
   margin-right: 63px;
+  @include to-375() {
+    margin-right: 40px;
+    &:last-child {
+      margin-top: 15px;
+    }
+  }
 }
 
 &__title {
@@ -153,9 +189,12 @@ export default {
     font-size: 18px;
     line-height: 45px;
   }
+  @include to-375() {
+    font-size: 15px;
+    line-height: 0px;
+    margin-bottom: 30px;
+  }
 }
-
-&__list {}
 
 &__item {
   font-weight: 400;
@@ -166,6 +205,11 @@ export default {
   position: relative;
   z-index: 1;
   width: fit-content;
+  @include to-375() {
+    font-size: 15px;
+    line-height: 0px;
+    margin-bottom: 30px;
+  }
     &:hover {
       color: white;
         &::before {
@@ -191,6 +235,10 @@ export default {
   @include to-960() {
     padding: 30px 5px 30px 30px;
   }
+  @include to-375() {
+    align-items: center;
+    padding: 30px 30px 30px 30px;
+  }
 
 &__phone {
   display: flex;
@@ -202,10 +250,13 @@ export default {
     font-size: 23px;
     line-height: 72px;
   }
+  @include to-375() {
+    font-size: 20px;
+  }
   & div {
     margin-right: 30px;
     @include to-960() {
-      margin-right: 25px;
+      margin-right: 23px;
   }
   }
   & img {
@@ -236,6 +287,10 @@ export default {
     font-size: 18px;
     line-height: 30px;
   }
+  @include to-375() {
+    text-align: center;
+    margin-bottom: 0;
+  }
 }
 
 &__subscribe {
@@ -251,6 +306,9 @@ export default {
     height: 76px;
     width: 100%;
     justify-content: space-between;
+  }
+  @include to-375() {
+    display: none;
   }
   & label {
     width: 100%;

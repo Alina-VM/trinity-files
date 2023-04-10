@@ -2,18 +2,19 @@
     <div class="header-wrapper">
         <div class="header row" :class="{'blur': showModal}">
             <div class="header__left-menu row" :class="{'display-none': showModal}">
-                <img src="../assets/menu.svg" alt="menu" class="menu-burger left-menu__item"
-                @click="showModal = true" @keypress="showModal = true"
-                >
+                    <img src="../assets/menu.svg" alt="menu" class="menu-burger left-menu__item"
+                    @click="showModal = true" @keypress="showModal = true">
                 <router-link to="/carlist" class="left-menu__item">Car List</router-link>
                 <div class="left-menu__item">Yach List</div>
                 <div class="left-menu__item">Chauffeur</div>
             </div>
-            <div class="header-logo row" :class="{'display-none': showModal}">
-                <img src="../assets/logo.svg" alt="logo" class="header-logo__img">
-                <div class="header-logo__name">TRINITY</div>
-                <div class="header-logo__description">CAR RENTAL BOUTIQUE</div>
-            </div>
+            <a href="/">
+                <div class="header-logo row" :class="{'display-none': showModal}">
+                    <img src="../assets/logo.svg" alt="logo" class="header-logo__img">
+                    <div class="header-logo__name">TRINITY</div>
+                    <div class="header-logo__description">CAR RENTAL BOUTIQUE</div>
+                </div>
+            </a>
             <div class="header__right-menu row" :class="{'display-none': showModal}">
                 <div class="right-menu__item">+971 58 590 7875</div>
                 <!-- <label for="cities" class="right-menu__item">

@@ -1,0 +1,23 @@
+.breadcrumb {
+    font-weight: 400;
+    & ul {
+      display: flex;
+      align-items: center;
+      color: #717171;
+
+    }
+    & img {
+        display: block;
+    }
+  &__link {
+    font-size: 16px;
+    line-height: 90px;
+    color:#22ECF3 !important;
+    text-decoration: underline;
+  }
+  &__arrow {
+    margin-left: 19px;
+    margin-right: 13px;
+    align-self: center;
+  }
+  }

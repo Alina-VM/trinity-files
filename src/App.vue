@@ -18,9 +18,10 @@ export default {
 };
 </script>
 <style src="./css/common.css"></style>
-<style lang="scss" scoped>
+<style lang="scss">
   .main {
-    height: calc(100vh);
+    //height: calc(100vh);
+    //height: 100%;
     flex-direction: column;
     display: flex;
     align-items: stretch;
