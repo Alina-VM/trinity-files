@@ -17,16 +17,6 @@
             </a>
             <div class="header__right-menu row" :class="{'display-none': showModal}">
                 <div class="right-menu__item">+971 58 590 7875</div>
-                <!-- <label for="cities" class="right-menu__item">
-                    <div class="select select--city" :class="{'selectOpened': isActiveCity}"
-                    @click="isActiveCity=!isActiveCity" @keypress="isActive=!isActive">
-                        <select v-model="selectedCity" >
-                            <option v-for="city in cities" v-bind:value="city.value"
-                            v-bind:key="city">
-                                {{city.text}}</option>
-                        </select>
-                    </div>
-                </label> -->
                 <div class="header__right-menu row city-select right-menu__item"
                 @click="showCityList =!showCityList" @keypress="showCityList =!showCityList">
                     <div class="city-select__lable">{{selectedCity}}</div>
@@ -39,16 +29,18 @@
                     @click="cityBlock" @keypress="cityBlock">
                         {{ city.value }}</div>
                 </div>
-                <label for="lang" class="right-menu__item">
-                    <div class="select select--lang" :class="{'selectOpened': isActiveLang}"
-                    @click="isActiveLang=!isActiveLang" @keypress="isActive=!isActive">
-                        <select v-model="selectedLang">
-                            <option v-for="lang in languages" v-bind:value="lang.value"
-                            v-bind:key="lang">
-                            {{ lang.text }}</option>
-                        </select>
-                    </div>
-                </label>
+                <div class="header__right-menu row language-select right-menu__item"
+                @click="showLangList =!showLangList" @keypress="showLangList =!showLangList">
+                    <div class="language-select__lable">{{selectedLang}}</div>
+                    <img v-if="showLangList" src="../assets/dropdown1.svg" alt="" >
+                    <img v-else src="../assets/arrow-white1.svg" alt="">
+                </div>
+                <div class="language-select__list" v-if="showLangList"
+                @click.stop="showLangList = false" @keypress.stop="showLangList = false">
+                    <div v-for="lang in languages" v-bind:key="lang" class="city"
+                    @click="langBlock" @keypress="langBlock">
+                        {{ lang.value }}</div>
+                </div>
             </div>
         </div>
 
@@ -74,6 +66,7 @@ export default {
       isActiveCity: false,
       isActiveLang: false,
       showCityList: false,
+      showLangList: false,
     };
   },
   computed: {
@@ -82,6 +75,9 @@ export default {
   methods: {
     cityBlock(e) {
       this.selectedCity = e.target.textContent;
+    },
+    langBlock(e) {
+      this.selectedLang = e.target.textContent;
     },
   },
 
@@ -111,11 +107,7 @@ export default {
         @content
     }
 }
-@mixin to-375 {
-    @media  screen and (max-width: 375px) {
-        @content
-    }
-}
+
     .header {
         padding: 40px 60px 60px;
         align-items: center;
@@ -132,13 +124,17 @@ export default {
         @include to-960() {
             padding: 30px 25px;
         }
+        @include to-768 {
+            padding: 30px 25px 0;
+            margin-bottom: 30px;
+        }
     }
     .header-logo {
         flex-direction: column;
         align-items: center;
         &__img {
             margin-bottom: 22px;
-            @include to-375() {
+            @include to-768 {
                 width: 50px;
                 height: 47px;
             }
@@ -148,14 +144,15 @@ export default {
             font-size: 28px;
             text-transform: uppercase;
             margin-bottom: 15px;
-            @include to-375() {
+            @include to-768 {
                 display: none;
             }
         }
 
         &__description {
             font-size: 11px;
-            @include to-375() {
+            text-align: center;
+            @include to-768 {
                 display: none;
             }
         }
@@ -172,7 +169,7 @@ export default {
                 margin-right: 30px;
             }
             &:not(:first-child) {
-                @include to-375() {
+                @include to-768 {
                     display: none;
                 }
             }
@@ -198,8 +195,8 @@ export default {
             @media screen and (max-width: 1250px) {
                 margin-left: 30px;
             }
-        &:not(:last-child) {
-            @include to-375() {
+        &:not(:nth-child(3)) {
+            @include to-768 {
                 display: none;
             }
         }
@@ -207,7 +204,7 @@ export default {
     }
     .menu-burger {
         cursor: pointer;
-        @include to-375() {
+        @include to-768 {
             width: 55px;
             height: 11px;
         }
@@ -221,42 +218,43 @@ export default {
     .display-none {
         display: none;
     }
-select {
-    appearance: none;
-    flex: 1;
-    background: #3a4f60;
-    margin-right: 10px;
-    outline: 0;
-    box-shadow:none;
-    padding: 0 .5em;
-    border: 0 !important;
-    background-image: none;
-    cursor: pointer;
-    color: white;
-        &::-ms-expand {
-            display: none;
-        }
-}
+// select {
+//     appearance: none;
+//     flex: 1;
+//     background: #3a4f60;
+//     margin-right: 10px;
+//     outline: 0;
+//     box-shadow:none;
+//     padding: 0 .5em;
+//     border: 0 !important;
+//     background-image: none;
+//     cursor: pointer;
+//     color: white;
+//         &::-ms-expand {
+//             display: none;
+//         }
+// }
 .select--city {
     @include select(120px)
 }
 .select--lang {
     @include select(70px)
 }
-    .select.selectOpened::after {
-        content: url('../assets/dropdown.svg');
-        position: absolute;
-        pointer-events:none;
-        cursor:pointer;
-        top: 2px;
-        right: 0;
-        padding: 0 1em;
-}
+//     .select.selectOpened::after {
+//         content: url('../assets/dropdown.svg');
+//         position: absolute;
+//         pointer-events:none;
+//         cursor:pointer;
+//         top: 2px;
+//         right: 0;
+//         padding: 0 1em;
+// }
 
 .city-select {
     position: relative;
     width: 120px;
     cursor: pointer;
+    margin-right: 10px;
     @include to-960() {
             width: 60px;
         }
@@ -287,6 +285,25 @@ select {
     &:hover {
         color: #33B7BC;
     }
+}
+.language-select {
+    position: relative;
+    width: 60px;
+    cursor: pointer;
+&__lable {
+    margin-right: 10px;
+}
+
+&__list {
+    position: absolute;
+    top: 140px;
+    right: 49px;
+    padding: 10px 25px;
+    border-radius: 10%;
+    border: solid 1px #3a4f60;
+    width: 188px;
+    height: 120px;
+}
 }
 
 </style>

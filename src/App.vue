@@ -17,7 +17,6 @@ export default {
   },
 };
 </script>
-<style src="./css/common.css"></style>
 <style lang="scss">
   .main {
     //height: calc(100vh);

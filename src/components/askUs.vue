@@ -17,18 +17,15 @@
         </div>
     </div>
     <div class="subscribe">
+      <img src="../assets/circles-conditions.svg" alt="" class="subscribe__circle-left">
+      <img src="../assets/circles-conditions.svg" alt="" class="subscribe__circle-right">
+      <img src="../assets/square-conditions.png" alt="" class="subscribe__square">
         <div class="subscribe__title">Get a discount of up to <span>60%</span></div>
         <div class="subscribe__description">
           Get the latest articles and business updates that you need to know, you’ll
           even get special recommendations weekly.
         </div>
         <div class="subscribe__email">
-          <img src="../assets/circles-conditions.svg" alt=""
-          class="subscribe__circle-left">
-          <img src="../assets/circles-conditions.svg" alt=""
-          class="subscribe__circle-right">
-          <img src="../assets/square-conditions.png" alt=""
-          class="subscribe__square">
           <div class="email-field">
             <img class="email-field__img" src="../assets/envelope.svg" alt="">
             <input class="email-field__text" placeholder="Your email">
@@ -48,16 +45,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@mixin to-960 {
-    @media screen and (max-width: 960px) {
-        @content
-    }
-}
-@mixin to-375 {
-    @media screen and (max-width: 375px) {
-        @content
-    }
-}
+
 .contacts {
   display: flex;
   justify-content: space-between;
@@ -65,10 +53,11 @@ export default {
   width: 100%;
   margin-right: 60px;
   margin-bottom: 250px;
-  @include to-375 {
+  @include to-768 {
         padding: 0 20px;
         align-items: center;
         margin-right: 0;
+        margin-bottom: 80px;
     }
 
   &__map {
@@ -76,7 +65,7 @@ export default {
     display: inline-block;
     border-radius: 0 10px 10px 0;
     margin-right: 60px;
-    @include to-375 {
+    @include to-768 {
         display: none;
     }
   }
@@ -104,7 +93,7 @@ export default {
         margin-bottom: 28px;
 
     }
-    @include to-375 {
+    @include to-768 {
         font-weight: 700;
         font-size: 40px;
         line-height: 48px;
@@ -132,7 +121,6 @@ export default {
         margin-bottom: 13px;
         padding-left: 18px;
     }
-
   }
 }
 textarea {
@@ -150,17 +138,24 @@ textarea {
     flex-direction: column;
     align-items: center;
     margin-bottom: 250px;
-  &__title {
-    font-size: 46px;
-    font-family: 'Stolzl';
-    font-weight: 400;
-    line-height: 36px;
-    text-align: center;
-    margin-bottom: 25px;
-    color: white;
+    &__title {
+      font-size: 46px;
+      font-family: 'Stolzl';
+      font-weight: 400;
+      line-height: 36px;
+      text-align: center;
+      margin-bottom: 25px;
+      color: white;
+      @include to-768 {
+        font-size: 24px;
+        line-height: 34px;
+        margin-bottom: 30px;
+
+      }
     & span {
-        font-weight: 700;
+      font-weight: 700;
     }
+
   }
 
   &__description {
@@ -171,10 +166,21 @@ textarea {
     text-align: center;
     margin-bottom: 54px;
     color: #868686;
+    @include to-768 {
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 25px;
+    }
   }
 
   &__email {
     display: flex;
+    //flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    @include to-768 {
+      flex-direction: column;
+    }
   }
 
   &__circle-left {
@@ -182,6 +188,9 @@ textarea {
     top: 122px;
     left: 34px;
     opacity: 0.4;
+    @include to-768 {
+      display: none;
+    }
   }
 
   &__circle-right {
@@ -191,18 +200,35 @@ textarea {
     transform: rotate(-90deg);
     width: 284px;
     opacity: 0.4;
+    @include to-768 {
+      display: none;
+    }
   }
 
   &__square {
     position: absolute;
     bottom: -72px;
     right: -93px;
+    @include to-768 {
+      display: none;
+    }
+  }
+  @include to-768 {
+      padding: 20px;
+      margin: 0 20px 80px 20px;
   }
 }
 
 .email-field {
   display: flex;
   position: relative;
+  flex-grow: 1;
+  max-width: 425px;
+  @include to-768 {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
   &__img {
     position: absolute;
     top: 24px;
@@ -212,8 +238,9 @@ textarea {
   }
 
   &__text {
-    width: 425px;
+    // max-width: 425px;
     padding-left: 65px;
+    flex-grow: 1;
     height: 68px;
     border-radius: 10px;
     background-color: #2B282B;
@@ -223,6 +250,10 @@ textarea {
     font-size: 18px;
     margin-right: 10px;
     opacity: 0.9;
+    @include to-768 {
+      font-size: 15px;
+      margin-right: 0;
+    }
   }
 
   &__button {
@@ -235,7 +266,7 @@ textarea {
     text-align: center;
     text-transform: uppercase;
     height: 68px;
-    width: 180px;
+    min-width: 180px;
     border-radius: 10px;
   }
 }

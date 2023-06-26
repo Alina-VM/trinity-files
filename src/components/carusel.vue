@@ -92,11 +92,7 @@ export default {
         @content
     }
 }
-@mixin to-375 {
-    @media  screen and (max-width: 375px) {
-        @content
-    }
-}
+
   .carusel {
       background-color: #161516;
       padding: 40px 0;
@@ -124,7 +120,7 @@ export default {
           @include to-960() {
           font-size: 35px;
           }
-          @include to-375() {
+          @include to-768 {
             font-size: 24px;
           }
           &:hover {

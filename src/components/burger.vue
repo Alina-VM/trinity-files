@@ -64,11 +64,7 @@ export default {
 </script>
 <style src="../css/common.css"></style>
 <style lang="scss" scoped>
-@mixin to-375 {
-    @media  screen and (max-width: 375px) {
-        @content
-    }
-}
+
     .menu {
         position: absolute;
         top: 0;
@@ -77,7 +73,7 @@ export default {
         background-color: black;
         background-image: url('../assets/burger-bg.jpg');
         background-position: bottom;
-        @include to-375() {
+        @include to-768 {
             padding: 30px 20px;
         }
         &__logo {
@@ -85,7 +81,7 @@ export default {
             flex-direction: column;
             align-items: center;
             & img {
-                @include to-375() {
+                @include to-768 {
                 width: 50px;
                 height: 47px;
                 }
@@ -95,12 +91,12 @@ export default {
         &__name {
             font-size: 26px;
             margin-bottom: 10px;
-            @include to-375() {
+            @include to-768 {
                 display: none;
             }
         }
         &__description {
-            @include to-375() {
+            @include to-768 {
                 display: none;
             }
         }
@@ -109,7 +105,7 @@ export default {
             height: 47px;
             margin-right: 37%;
             cursor: pointer;
-            @include to-375() {
+            @include to-768 {
                 width: 34px;
                 height: 34px;
                 margin-right: 100px;
@@ -128,7 +124,7 @@ export default {
             z-index: 1;
             width: fit-content;
             cursor: pointer;
-            @include to-375() {
+            @include to-768 {
                 font-size: 20px;
             }
             &:hover {
@@ -166,7 +162,7 @@ export default {
         color: #76828C;
         //font-size: 24px;
         font-weight: 300;
-        @include to-375() {
+        @include to-768 {
                 display: none;
         }
     }
@@ -176,7 +172,7 @@ export default {
         align-items: center;
         color: white;
         & img {
-            @include to-375() {
+            @include to-768 {
             width: 97px;
             height: 40px;
             }
@@ -184,7 +180,7 @@ export default {
     }
     .footer-phone {
         margin-right: 20px;
-        @include to-375() {
+        @include to-768 {
             margin-right: 100px;
         }
     }

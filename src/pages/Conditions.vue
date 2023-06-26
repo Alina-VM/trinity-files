@@ -109,10 +109,8 @@
         </details>
       </div>
       <askUs/>
-
     </div>
   </div>
-
   <sendRequestButton/>
 </template>
 <script>
@@ -125,9 +123,8 @@ export default {
   },
 };
 </script>
-<style src="../css/common.css"></style>
-<style src="../css/breadcrumb.css"></style>
 <style lang="scss" scoped>
+
 .conditions-wrapper {
   width: 100%;
   height: 100%;
@@ -147,6 +144,9 @@ export default {
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  @include to-768 {
+    padding-top: 0;
+  }
 }
 
 .h1 {
@@ -154,7 +154,11 @@ export default {
   font-weight: 500;
   font-size: 70px;
   margin-bottom: 70px;
-
+  @include to-768 {
+    font-size: 40px;
+    margin-bottom: 0;
+    text-align: center;
+  }
 }
 
 .description {
@@ -162,6 +166,11 @@ export default {
   font-weight: 400;
   font-size: 26px;
   margin-bottom: 40px;
+  @include to-768 {
+    font-size: 18px;
+    line-height: 90px;
+    margin-bottom: 0;
+  }
 }
 
 .requirements-block {
@@ -207,6 +216,10 @@ export default {
   width: 100%;
   margin: 0 20px 235px 20px;
   max-width: 960px;
+  @include to-768 {
+    padding: 0 20px;
+    margin-bottom: 80px;
+  }
 
   &__item {
     display: flex;
@@ -230,6 +243,10 @@ export default {
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 500;
+    @include to-768 {
+      font-size: 18px;
+      line-height: 22px;
+    }
   }
 
   &__show {
@@ -241,7 +258,10 @@ export default {
     font-size: 18px;
     color: #C6CDDA;
     margin-top: 26px;
-
+    @include to-768 {
+      font-size: 15px;
+      line-height: 24px;
+    }
   }
 }
 

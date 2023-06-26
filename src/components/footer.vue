@@ -86,14 +86,10 @@ export default {
         @content
     }
 }
-@mixin to-375 {
-    @media  screen and (max-width: 375px) {
-        @content
-    }
-}
 
   .footer {
     background-color: #161516;
+    overflow: hidden;
 &__main {
   border-top: solid 1px #414039;
   display: flex;
@@ -108,7 +104,7 @@ export default {
   & img {
     width: 100%;
   }
-  @include to-375() {
+  @include to-768 {
     display: none;
   }
 }
@@ -120,7 +116,7 @@ export default {
   align-items: center;
   padding: 25px 60px;
   border-top: solid 1px #414039;
-  @include to-375() {
+  @include to-768 {
     flex-direction: column;
     padding: 25px 45px;
   }
@@ -128,7 +124,7 @@ export default {
 
 &__privacy {
   color: #33B7BC;
-  @include to-375() {
+  @include to-768 {
     order: 6;
   }
 }
@@ -136,7 +132,7 @@ export default {
 &__year {
   color: #414039;
   text-align: center;
-  @include to-375() {
+  @include to-768 {
     margin-bottom: 25px;
   }
 }
@@ -151,7 +147,7 @@ export default {
       margin-right: 0;
     }
   }
-  @include to-375() {
+  @include to-768 {
     order: -1;
     margin-bottom: 30px;
   }
@@ -165,14 +161,14 @@ export default {
   @include to-960() {
     padding: 30px;
   }
-  @include to-375() {
+  @include to-768 {
     flex-wrap: wrap;
   }
 
 &__block {
   min-width: 30%;
   margin-right: 63px;
-  @include to-375() {
+  @include to-768 {
     margin-right: 40px;
     &:last-child {
       margin-top: 15px;
@@ -189,7 +185,7 @@ export default {
     font-size: 18px;
     line-height: 45px;
   }
-  @include to-375() {
+  @include to-768 {
     font-size: 15px;
     line-height: 0px;
     margin-bottom: 30px;
@@ -205,7 +201,7 @@ export default {
   position: relative;
   z-index: 1;
   width: fit-content;
-  @include to-375() {
+  @include to-768 {
     font-size: 15px;
     line-height: 0px;
     margin-bottom: 30px;
@@ -233,9 +229,11 @@ export default {
   flex-direction: column;
   width: 798px;
   @include to-960() {
-    padding: 30px 5px 30px 30px;
+    padding: 30px 30px 30px 30px;
+    margin: 0 auto;
+    align-items: center;
   }
-  @include to-375() {
+  @include to-768 {
     align-items: center;
     padding: 30px 30px 30px 30px;
   }
@@ -250,7 +248,7 @@ export default {
     font-size: 23px;
     line-height: 72px;
   }
-  @include to-375() {
+  @include to-768 {
     font-size: 20px;
   }
   & div {
@@ -287,7 +285,7 @@ export default {
     font-size: 18px;
     line-height: 30px;
   }
-  @include to-375() {
+  @include to-768 {
     text-align: center;
     margin-bottom: 0;
   }
@@ -307,13 +305,12 @@ export default {
     width: 100%;
     justify-content: space-between;
   }
-  @include to-375() {
+  @include to-768 {
     display: none;
   }
   & label {
     width: 100%;
   }
-
 }
 }
 #email {

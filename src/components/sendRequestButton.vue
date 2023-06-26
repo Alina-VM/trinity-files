@@ -14,6 +14,7 @@ export default {
             @content
         }
     }
+
     button {
         font-family: 'Stolzl';
         font-style: normal;
@@ -30,6 +31,10 @@ export default {
             font-size: 15px;
             max-width: 320px;
             line-height: 60px;
+        }
+        @include to-768 {
+            max-width: 100%;
+            width: 100%;
         }
     }
 </style>
