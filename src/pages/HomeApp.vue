@@ -33,7 +33,12 @@
         <div class="most-popular__search-block">
             <div class="most-popular__title">Most Popular</div>
             <div class="most-popular__search">
-                <div>Car search</div>
+                <div>
+                    <label for="search">
+                        <input class="most-popular__search--text" placeholder="Car search">
+                    </label>
+
+                </div>
                 <img src="../assets/search.svg" alt="">
             </div>
             <!-- <div class="most-popular__carusel">
@@ -175,7 +180,6 @@ export default {
         flex-direction: column;
         //width: 100%;
         flex-grow: 1;
-
     }
 
     &__title {
@@ -194,14 +198,17 @@ export default {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding: 0 30px;
+        margin-bottom: 50px;
+    }
+    &__search--text[placeholder] {
+        background: none;
         font-family: Stolzl;
         font-weight: 400;
         font-size: 20px;
         line-height: 90px;
         color: #707070;
-        padding: 0 30px;
     }
-
     &__carusel {
         flex: 1 1 auto;
         color: #FFF;
@@ -219,7 +226,7 @@ export default {
     text-transform: uppercase;
     background-color: #33B7BC;
     border-radius: 10px;
-    margin-left: 131px;
+    //margin-left: 131px;
   }
   .carusel-block {
 
