@@ -52,15 +52,18 @@
             <button class="most-popular__button">VIEW ALL</button>
         </div>
     </div>
+    <OfferBlockMain />
 </template>
 <script>
 import { mapGetters } from 'vuex';
 import SliderApp from '../components/Slider.vue';
+import OfferBlockMain from '../components/OfferBlockMain.vue';
 
 export default {
   name: 'HomeApp',
   components: {
     SliderApp,
+    OfferBlockMain,
   },
   computed: {
     ...mapGetters({ availableCars: 'availableCars' }),
@@ -141,13 +144,14 @@ export default {
             max-width: 1110px;
             max-height: 860px;
             width: 100%;
-
+            height: auto;
         }
     }
 
     &__text {
         display: flex;
         justify-content: space-between;
+
     }
 
     &__name {
@@ -156,6 +160,11 @@ export default {
         margin-top: -180px;
         //width: 487px;
         margin-left: 60px;
+        @include to-960 {
+            margin-top: -133px;
+            margin-left: 15px;
+            font-size: 28px;
+        }
     }
 
     &__description {
@@ -171,6 +180,12 @@ export default {
             font-size: 50px;
             font-weight: 700;
             line-height: 11px;
+            @include to-960 {
+                font-size: 30px;
+            }
+        }
+        @include to-960 {
+            margin-top: -133px;
         }
     }
 
@@ -188,6 +203,10 @@ export default {
         font-weight: 500;
         line-height: 90px;
         color: #FFF;
+        @include to-960 {
+            font-size: 40px;
+            line-height: 53px;
+        }
     }
 
     &__search {
@@ -199,7 +218,7 @@ export default {
         display: flex;
         justify-content: space-between;
         padding: 0 30px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
     &__search--text[placeholder] {
         background: none;
@@ -208,6 +227,10 @@ export default {
         font-size: 20px;
         line-height: 90px;
         color: #707070;
+        @include to-960 {
+            font-size: 15px;
+            line-height: 48px;
+        }
     }
     &__carusel {
         flex: 1 1 auto;
@@ -228,26 +251,32 @@ export default {
     border-radius: 10px;
     //margin-left: 131px;
   }
-  .carusel-block {
-
-    &__name {
-        color: #FFF;
-        font-family: Stolzl;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 45px;
-    }
-
-    &__model {
-        color: #646464;
-        font-family: Stolzl;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-    }
+  @include to-960 {
+    padding-bottom: 120px;
+    padding-top: 120px;
+  }
+  @include to-768 {
+    display: none;
+  }
 }
+.carusel-block {
 
+&__name {
+    color: #FFF;
+    font-family: Stolzl;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 45px;
+    }
+
+&__model {
+    color: #646464;
+    font-family: Stolzl;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    }
 }
 
 </style>

@@ -102,12 +102,11 @@ export default {
             padding: 0 1em;
         }
     }
-@mixin to-960 {
-    @media  screen and (max-width: 960px) {
-        @content
+    @mixin to-960 {
+        @media  screen and (max-width: 960px) {
+            @content
+        }
     }
-}
-
     .header {
         padding: 40px 60px 60px;
         align-items: center;

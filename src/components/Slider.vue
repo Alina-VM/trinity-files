@@ -97,7 +97,7 @@ export default {
     //   });
     // },
     changeCentralSlide() {
-      console.log(document.querySelectorAll('.slider__name'));
+      // console.log(document.querySelectorAll('.slider__name'));
       document.querySelectorAll('.slider__name').forEach((el, ind) => {
         if (ind === this.clickCounter) {
           el.classList.add('click-slidename');
@@ -110,7 +110,7 @@ export default {
   mounted() {
     this.changeCentralSlide();
     this.slideHeight = document.querySelector('.slider__slide').offsetHeight;
-    console.log(this.slides.length);
+    // console.log(this.slides.length);
     document.querySelector('.slider__wrapper').style.height = `${this.slideHeight * 5}px`;
     // const observer = new IntersectionObserver(this.callback, {
     //   root: this.$refs.sliderWrapper,
@@ -128,17 +128,24 @@ export default {
 .slider {
   color: white;
   position: relative;
-&__container {
-    margin-bottom: 64px;
-    display: flex;
-}
-&__wrapper {
-  overflow: hidden;
-
+  &__container {
+      margin-bottom: 64px;
+      display: flex;
+      @include to-960 {
+        margin-bottom: 20px;
+        height: 213px;
+        overflow: hidden;
+    }
+  }
+  &__wrapper {
+    overflow: hidden;
 }
 
 &__slide {
-  padding-left: 90px;
+  padding: 22px 0 22px 90px;
+  @include to-960 {
+    padding: 10px 0 10px 60px;
+  }
 }
 
 &__name {
@@ -149,6 +156,10 @@ export default {
     font-weight: 700;
     line-height: 45px;
     cursor: pointer;
+    @include to-960 {
+      font-size: 16px;
+      line-height: 25px;
+    }
 }
 
 &__model {
@@ -157,6 +168,9 @@ export default {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    @include to-960 {
+      font-size: 12px;
+    }
 }
 &__button {
   background-color: black;
@@ -191,7 +205,7 @@ export default {
   & + .slider__model {
     color: #049393;
     font-family: Stolzl;
-    font-size: 18px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     position: relative;
@@ -208,6 +222,12 @@ export default {
       width: 100%;
       height: 100%;
     }
+    @include to-960 {
+      font-size: 13px;
+    }
+  }
+  @include to-960 {
+    font-size: 24px;
   }
 }
 .prev-green {

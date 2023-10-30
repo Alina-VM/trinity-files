@@ -4,6 +4,7 @@ import HomeApp from '../pages/HomeApp.vue';
 import CarList from '../pages/CarList.vue';
 import Lamborgini from '../pages/Lamborgini.vue';
 import Conditions from '../pages/Conditions.vue';
+import AboutUsApp from '../pages/AboutUsApp.vue';
 
 const routes = [
   {
@@ -44,7 +45,7 @@ const routes = [
   {
     path: '/about-us',
     name: 'about-us',
-    component: CarList,
+    component: AboutUsApp,
   },
   {
     path: '/contacts',

@@ -33,7 +33,7 @@
                 <router-link :to= "{name: 'carlist'}" class="menu__item"
                 @click="$emit('close')" @keypress="$emit('close')"
                 >Articles</router-link>
-                <router-link :to= "{name: 'carlist'}" class="menu__item"
+                <router-link :to= "{name: 'about-us'}" class="menu__item"
                 @click="$emit('close')" @keypress="$emit('close')"
                 >About US</router-link>
                 <router-link :to= "{name: 'carlist'}" class="menu__item"
